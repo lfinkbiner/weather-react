@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import "./weather.css";
 
 export default function Search(props) {
   const [message, setMessage] = useState(null);
@@ -10,11 +11,12 @@ export default function Search(props) {
     let city = response.data.name;
     let wind = response.data.wind.speed;
     let humidity = response.data.main.humidity;
-    setMessage(`
-    City:${city}
-    Temperature: ${temp}°C
-    Wind:${wind}km/hr
-    Humidity:${humidity}%`);
+    setMessage(<ul>
+    <li>{city}</li>
+    <li>Temperature: {temp}°C</li>
+    <li>Wind: {wind}km/hr</li>
+    <li>Humidity: {humidity}%</li>
+    </ul>);
   }
 
   function handleSubmit(event) {
